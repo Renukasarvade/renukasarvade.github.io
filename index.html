@@ -301,11 +301,19 @@ nav{
 .pb-gray{background:rgba(148,163,184,.06);border:1px solid rgba(148,163,184,.15);color:var(--text3)}
 .proj-title{font-size:18px;font-weight:700;line-height:1.25}
 .proj-desc{font-size:13px;color:var(--text2);line-height:1.8}
+.proj-bullets{list-style:none;display:flex;flex-direction:column;gap:7px;padding:0;margin:0}
+.proj-bullets li{font-size:13px;color:var(--text2);line-height:1.7;padding-left:18px;position:relative}
+.proj-bullets li::before{content:'▸';position:absolute;left:0;color:var(--green);font-size:10px;top:3px}
 .proj-footer{display:flex;align-items:center;justify-content:space-between;padding-top:4px}
 .ptags{display:flex;flex-wrap:wrap;gap:5px}
 .ptag{font-family:var(--mono);font-size:9px;padding:3px 8px;border-radius:3px;background:var(--bg3);border:1px solid var(--border2);color:var(--text3)}
 .proj-go{font-size:16px;color:var(--text3);transition:all .2s;flex-shrink:0}
 .proj:hover .proj-go{color:var(--blue2);transform:translate(3px,-3px)}
+.proj-links{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pl-gh{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:9px;padding:4px 10px;border-radius:4px;background:rgba(255,255,255,.04);border:1px solid var(--border2);color:var(--text3);text-decoration:none;transition:all .2s}
+.pl-gh:hover{border-color:rgba(59,130,246,.4);color:var(--blue2);background:rgba(59,130,246,.06)}
+.pl-live{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:9px;padding:4px 10px;border-radius:4px;background:rgba(34,197,94,.07);border:1px solid rgba(34,197,94,.25);color:var(--green2);text-decoration:none;transition:all .2s}
+.pl-live:hover{background:rgba(34,197,94,.14);border-color:var(--green2)}
 
 /* flow panel */
 .flow-panel{
@@ -511,14 +519,14 @@ footer a{color:var(--blue2);text-decoration:none}
       AI Engineer.
     </h1>
     <div class="h-role">Python · Flask · LLMs · FAISS · YOLO · React</div>
-    <p class="h-bio">I build AI systems that solve real problems — legal document automation for government offices, livestock disease detection for rural farmers, and navigation tools for the visually impaired. Final-year BTech AI & Data Science, CGPA 8.09.</p>
+    <p class="h-bio">I build AI systems that solve real problems — legal document automation for government offices, livestock disease detection for rural farmers, and navigation tools for the visually impaired. Final-year BTech AI & Data Science, CGPA 7.46.</p>
     <div class="h-pills">
       <span class="hp">Python</span><span class="hp">Flask</span><span class="hp">LLMs</span><span class="hp">OCR · NLP</span><span class="hp">FAISS</span><span class="hp">YOLO</span><span class="hp">React</span><span class="hp">Android</span><span class="hp">VectorDB</span>
     </div>
     <div class="h-btns">
       <a href="https://github.com/Renukasarvade" target="_blank" class="hb1">GitHub →</a>
       <a href="https://linkedin.com/in/renuka-sarvade" target="_blank" class="hb2">LinkedIn</a>
-      <a  href="./Renuka_Sarvade_Resume.pdf" class="hb3">📄 Resume</a>
+      <a id="heroResume" href="#" class="hb3">📄 Resume</a>
     </div>
   </div>
 
@@ -534,8 +542,8 @@ footer a{color:var(--blue2);text-decoration:none}
         <div class="pc-title">AI Engineer · BTech AIDS</div>
       </div>
       <div class="pc-stats">
-        <div class="pcs"><div class="pcs-n">8.09</div><div class="pcs-l">CGPA</div></div>
-        <div class="pcs"><div class="pcs-n">4+</div><div class="pcs-l">Projects</div></div>
+        <div class="pcs"><div class="pcs-n">7.46</div><div class="pcs-l">CGPA</div></div>
+        <div class="pcs"><div class="pcs-n">6+</div><div class="pcs-l">Projects</div></div>
         <div class="pcs"><div class="pcs-n">2</div><div class="pcs-l">Papers</div></div>
         <div class="pcs"><div class="pcs-n">🥇</div><div class="pcs-l">Prize</div></div>
       </div>
@@ -565,8 +573,8 @@ footer a{color:var(--blue2);text-decoration:none}
       </div>
     </div>
     <div class="res-btns">
-      <a href="./Renuka_Sarvade_Resume.pdf" target="_blank" class="rb-view">👁 View PDF</a>
-      <a href="./Renuka_Sarvade_Resume.pdf" download="Renuka_Sarvade_Resume.pdf" class="rb-dl">⬇ Download</a>
+      <a id="viewRes" href="#" target="_blank" class="rb-view">👁 View PDF</a>
+      <a id="dlRes" href="#" download="Renuka_Sarvade_Resume.pdf" class="rb-dl">⬇ Download</a>
     </div>
   </div>
 </div>
@@ -586,20 +594,28 @@ footer a{color:var(--blue2);text-decoration:none}
       <div class="proj-body with-flow">
         <div style="display:flex;flex-direction:column;gap:11px">
           <div class="pbadge pb-blue">🏛️ Client · Solapur Municipal Corporation</div>
-          <div class="proj-title">SMC Legal – Tax Document Automation System</div>
-          <div class="proj-desc">Production backend extracting IPC sections, citations and legal metadata from PDFs via OCR + NLP. LLM-based summarization enables municipal officers to query massive legal archives instantly. A real RAG pipeline deployed for actual government use.</div>
+          <div class="proj-title">Nyay Setu – SMC Legal Tax Document Automation</div>
+          <ul class="proj-bullets">
+            <li>Municipal officers were drowning in dense English legal documents — <strong>Nyay Setu</strong> makes them readable in seconds, in both English and Marathi.</li>
+            <li>Drop in any PDF, scanned notice, or tax order — the system reads it, understands it, and returns a clean bilingual breakdown: summary, translation, key highlights, critical dates, and named entities.</li>
+            <li>Built-in <strong>legal dictionary</strong> — look up any term in simple English, formal legal definition, and Marathi.</li>
+            <li><strong>AI legal search</strong> — ask a question in plain language, get back relevant laws and references instantly.</li>
+            <li>Deployed and actively used inside Solapur Municipal Corporation. Received official Certificate of Appreciation.</li>
+          </ul>
           <div class="proj-footer">
-            <div class="ptags"><span class="ptag">Python</span><span class="ptag">Flask</span><span class="ptag">React</span><span class="ptag">OCR</span><span class="ptag">NLP</span><span class="ptag">LLMs</span><span class="ptag">FAISS</span></div>
-            <div class="proj-go">↗</div>
+            <div class="ptags"><span class="ptag">Python</span><span class="ptag">Flask</span><span class="ptag">Gemini 2.0 Flash</span><span class="ptag">Tesseract OCR</span><span class="ptag">Marathi NLP</span><span class="ptag">React</span></div>
+            <div class="proj-links">
+              <a class="pl-gh" href="https://github.com/Renukasarvade/smc-legal-tax-document-automation-system" target="_blank" onclick="event.stopPropagation()">⌥ GitHub ↗</a>
+            </div>
           </div>
         </div>
         <div class="flow-panel">
           <div class="fp-title">system flow</div>
-          <div class="fnode fn-in">PDF Input</div><div class="farr">↓</div>
-          <div class="fnode fn-pr">OCR Engine</div><div class="farr">↓</div>
-          <div class="fnode fn-pr">NLP Parser</div><div class="farr">↓</div>
-          <div class="fnode fn-pr">LLM Summarizer</div><div class="farr">↓</div>
-          <div class="fnode fn-out">Officer Query ✓</div>
+          <div class="fnode fn-in">PDF / DOCX / Image</div><div class="farr">↓</div>
+          <div class="fnode fn-pr">Bilingual OCR (EN+MR)</div><div class="farr">↓</div>
+          <div class="fnode fn-pr">Gemini 2.0 Flash</div><div class="farr">↓</div>
+          <div class="fnode fn-pr">Structured JSON Output</div><div class="farr">↓</div>
+          <div class="fnode fn-out">Summary · Dictionary · AI Search ✓</div>
         </div>
       </div>
     </div>
@@ -607,45 +623,34 @@ footer a{color:var(--blue2);text-decoration:none}
     <div class="proj reveal r1" onclick="window.open('https://github.com/Renukasarvade/legal-reference-identification-system','_blank')">
       <div class="proj-bar">
         <div class="proj-dots"><div class="pd" style="background:#f87171"></div><div class="pd" style="background:#fbbf24"></div><div class="pd" style="background:#4ade80"></div></div>
-        <div class="proj-fn">legal_search<span>.py</span></div>
-        <div class="proj-tech-hint">FAISS · VectorDB · LLM</div>
-      </div>
-      <div class="proj-body">
-        <div style="display:flex;flex-direction:column;gap:11px">
-          <div class="pbadge pb-gray">🔒 Private · Client Project</div>
-          <div class="proj-title">Legal Reference Identification System</div>
-          <div class="proj-desc">Semantic search over legal citations using FAISS vector database. Smart assistant for judges and lawyers — retrieve case insights, citations and legal context in seconds.</div>
-          <div class="proj-footer">
-            <div class="ptags"><span class="ptag">Flask</span><span class="ptag">FAISS</span><span class="ptag">NLP</span><span class="ptag">LLM</span><span class="ptag">VectorDB</span></div>
-            <div class="proj-go">↗</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="proj reveal r2" onclick="window.open('https://github.com/Renukasarvade/voice-agent-ai','_blank')" style="border-color:rgba(99,102,241,.15)">
-      <div class="proj-bar" style="border-color:rgba(99,102,241,.1)">
-        <div class="proj-dots"><div class="pd" style="background:#f87171"></div><div class="pd" style="background:#fbbf24"></div><div class="pd" style="background:#4ade80"></div></div>
-        <div class="proj-fn">voice_agent<span>.py</span></div>
-        <div class="proj-tech-hint">Groq · LLaMA · FastAPI</div>
+        <div class="proj-fn">doc_reference<span>.py</span></div>
+        <div class="proj-tech-hint">FAISS · OpenAI Embeddings · GPT-3.5-turbo RAG</div>
       </div>
       <div class="proj-body with-flow">
         <div style="display:flex;flex-direction:column;gap:11px">
-          <div class="pbadge" style="background:rgba(99,102,241,.12);color:#a5b4fc;border:1px solid rgba(99,102,241,.2)">🎙️ Agentic AI · Deployed on Render</div>
-          <div class="proj-title">VoiceAgent AI — Agentic Voice &amp; Text Assistant</div>
-          <div class="proj-desc">End-to-end AI agent converting voice/text input into structured actions — code generation, file creation, and document summarization. Uses Groq Whisper for transcription, LLaMA for intent classification, and DeepSeek Coder via OpenRouter for code generation. Full stack deployed on Render.</div>
+          <div class="pbadge pb-gray">🔬 Code Nucleus Internship Project</div>
+          <div class="proj-title">Document Reference System – RAG Legal Search (Port 8001)</div>
+          <ul class="proj-bullets">
+            <li>Legal research is slow and unforgiving — one missed judgment can lose a case. This system lets lawyers ask questions in plain language and get answers grounded in real case law.</li>
+            <li>Upload a judgment PDF and it becomes instantly searchable — the system finds the most relevant passages, reasons over them, and generates a structured judgment-style answer.</li>
+            <li>Not confident enough on local data? It <strong>falls back to a web search</strong> automatically, so gaps in the index never leave a user stranded.</li>
+            <li>A <strong>hallucination validator</strong> checks every answer before it reaches the user — no guessing, no fabrication.</li>
+            <li>Human reviewers approve, reject, or comment — approved answers are <strong>cached</strong>, making the system faster and sharper over time.</li>
+          </ul>
           <div class="proj-footer">
-            <div class="ptags"><span class="ptag">React (Vite)</span><span class="ptag">FastAPI</span><span class="ptag">Groq</span><span class="ptag">OpenRouter</span><span class="ptag">LLaMA</span><span class="ptag">Render</span></div>
-            <div class="proj-go">↗</div>
+            <div class="ptags"><span class="ptag">FAISS</span><span class="ptag">OpenAI Embeddings</span><span class="ptag">GPT-3.5-turbo</span><span class="ptag">RAG</span><span class="ptag">Hallucination Validation</span><span class="ptag">Flask</span></div>
+            <div class="proj-links">
+              <a class="pl-gh" href="https://github.com/Renukasarvade/rag-document-assistant" target="_blank" onclick="event.stopPropagation()">⌥ GitHub ↗</a>
+            </div>
           </div>
         </div>
         <div class="flow-panel">
-          <div class="fp-title">agent pipeline</div>
-          <div class="fnode fn-in">Voice / Text</div><div class="farr">↓</div>
-          <div class="fnode fn-pr">Whisper STT</div><div class="farr">↓</div>
-          <div class="fnode fn-pr">Intent Classify</div><div class="farr">↓</div>
-          <div class="fnode fn-pr">LLM Action</div><div class="farr">↓</div>
-          <div class="fnode fn-out">Code / File / Summary ✓</div>
+          <div class="fp-title">RAG pipeline</div>
+          <div class="fnode fn-in">Legal Judgment PDF</div><div class="farr">↓</div>
+          <div class="fnode fn-pr">Chunk + OpenAI Embed</div><div class="farr">↓</div>
+          <div class="fnode fn-pr">FAISS Vector Index</div><div class="farr">↓</div>
+          <div class="fnode fn-pr">GPT-3.5-turbo + RAG</div><div class="farr">↓</div>
+          <div class="fnode fn-out">Validated Answer + Human Review ✓</div>
         </div>
       </div>
     </div>
@@ -673,6 +678,78 @@ footer a{color:var(--blue2);text-decoration:none}
           <div class="fnode fn-pr">TFLite Model</div><div class="farr">↓</div>
           <div class="fnode fn-pr">Disease Match</div><div class="farr">↓</div>
           <div class="fnode fn-out">MR / HI / EN ✓</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VoiceAgent AI -->
+    <div class="proj reveal r2" onclick="window.open('https://github.com/Renukasarvade/voiceagent-ai','_blank')">
+      <div class="proj-bar">
+        <div class="proj-dots"><div class="pd" style="background:#f87171"></div><div class="pd" style="background:#fbbf24"></div><div class="pd" style="background:#4ade80"></div></div>
+        <div class="proj-fn">voice_agent<span>.jsx</span></div>
+        <div class="proj-tech-hint">React · FastAPI · Groq LLM · Render</div>
+      </div>
+      <div class="proj-body with-flow">
+        <div style="display:flex;flex-direction:column;gap:11px">
+          <div class="pbadge pb-green">🎙️ Live · Deployed on Render</div>
+          <div class="proj-title">VoiceAgent AI – Intent-Driven Task Automation</div>
+          <ul class="proj-bullets">
+            <li>Talk or type a command — the agent understands <strong>what you want to do</strong> and does it: generates code, creates files, summarizes content, or answers questions.</li>
+            <li>LLM-powered <strong>intent detection</strong> classifies every input before routing it to the right action handler — no keyword matching, no hardcoded rules.</li>
+            <li>Full-stack: React (Vite) frontend talks to a FastAPI backend; LLM inference runs on Groq for near-instant responses.</li>
+            <li>Deployed and live — try it at <strong>voiceagent-ai.onrender.com</strong>.</li>
+          </ul>
+          <div class="proj-footer">
+            <div class="ptags"><span class="ptag">React</span><span class="ptag">Vite</span><span class="ptag">FastAPI</span><span class="ptag">Groq LLM</span><span class="ptag">Intent Detection</span><span class="ptag">Render</span></div>
+            <div class="proj-links">
+              <a class="pl-live" href="https://voiceagent-ai.onrender.com" target="_blank" onclick="event.stopPropagation()">▶ Live Demo ↗</a>
+              <a class="pl-gh" href="https://github.com/Renukasarvade/voiceagent-ai" target="_blank" onclick="event.stopPropagation()">⌥ GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="flow-panel">
+          <div class="fp-title">agent flow</div>
+          <div class="fnode fn-in">Text / Voice Input</div><div class="farr">↓</div>
+          <div class="fnode fn-pr">Intent Detection (LLM)</div><div class="farr">↓</div>
+          <div class="fnode fn-pr">Action Router</div><div class="farr">↓</div>
+          <div class="fnode fn-pr">Code / File / Summary</div><div class="farr">↓</div>
+          <div class="fnode fn-out">Response to User ✓</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DriveRAG -->
+    <div class="proj reveal r3" onclick="window.open('https://github.com/Renukasarvade/rag-document-assistant','_blank')">
+      <div class="proj-bar">
+        <div class="proj-dots"><div class="pd" style="background:#f87171"></div><div class="pd" style="background:#fbbf24"></div><div class="pd" style="background:#4ade80"></div></div>
+        <div class="proj-fn">drive_rag<span>.py</span></div>
+        <div class="proj-tech-hint">FAISS · Google Drive · Groq LLM</div>
+      </div>
+      <div class="proj-body with-flow">
+        <div style="display:flex;flex-direction:column;gap:11px">
+          <div class="pbadge pb-blue">☁️ Personal · Exploring RAG Pipelines</div>
+          <div class="proj-title">DriveRAG – Ask Your Google Drive Documents</div>
+          <ul class="proj-bullets">
+            <li>Your Google Drive becomes a searchable knowledge base — connect it once, then ask questions about any of your documents in plain language.</li>
+            <li>Syncs all PDFs, Docs, and TXT files automatically; chunks and embeds them into a <strong>FAISS vector index</strong> using SentenceTransformers (all-MiniLM-L6-v2).</li>
+            <li>Questions are matched semantically — the top 8 most relevant chunks are retrieved and handed to <strong>Groq LLaMA 3.3-70B</strong> to generate a structured, sourced answer.</li>
+            <li>Every answer cites <strong>which file it came from</strong> — no black-box responses, full traceability.</li>
+          </ul>
+          <div class="proj-footer">
+            <div class="ptags"><span class="ptag">FastAPI</span><span class="ptag">FAISS</span><span class="ptag">SentenceTransformers</span><span class="ptag">Groq LLaMA</span><span class="ptag">Google Drive API</span><span class="ptag">Streamlit</span></div>
+            <div class="proj-links">
+              <a class="pl-live" href="https://youtu.be/3m7L5kI_NCA" target="_blank" onclick="event.stopPropagation()">▶ Demo Video ↗</a>
+              <a class="pl-gh" href="https://github.com/Renukasarvade/rag-document-assistant" target="_blank" onclick="event.stopPropagation()">⌥ GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="flow-panel">
+          <div class="fp-title">RAG pipeline</div>
+          <div class="fnode fn-in">Google Drive Files</div><div class="farr">↓</div>
+          <div class="fnode fn-pr">Chunk + Embed (MiniLM)</div><div class="farr">↓</div>
+          <div class="fnode fn-pr">FAISS Vector Store</div><div class="farr">↓</div>
+          <div class="fnode fn-pr">Groq LLaMA 3.3-70B</div><div class="farr">↓</div>
+          <div class="fnode fn-out">Answer + Sources ✓</div>
         </div>
       </div>
     </div>
@@ -735,15 +812,15 @@ footer a{color:var(--blue2);text-decoration:none}
       </div>
       <div class="xp-body">
         <ul class="xp-pts">
-          <li>Built the SMC Legal Tax Document Automation System — a production RAG pipeline for municipal legal operations.</li>
-          <li>Designed OCR + NLP extraction pipeline to parse IPC sections, citations and metadata from government PDFs.</li>
-          <li>Integrated LLM-based summarization allowing officers to query large document archives via natural language.</li>
-          <li>Implemented FAISS vector search for semantic legal reference retrieval.</li>
+          <li>Built <strong>Nyay Setu</strong> — a production Flask + Gemini 2.0 Flash system for Solapur Municipal Corporation to automate analysis of government legal and tax documents.</li>
+          <li>Implemented bilingual OCR pipeline (English + Marathi via Tesseract) that auto-detects scanned documents and extracts full text before sending to Gemini for analysis.</li>
+          <li>Gemini 2.0 Flash returns structured JSON: English summary, Marathi translation, key highlights, important dates, significant numbers, and named entities (orgs, persons, places).</li>
+          <li>Built AI-powered legal search (Gemini as search engine with reference links) and a bilingual legal dictionary supporting simple English, formal legal definition, and Marathi.</li>
           <li>Received official Certificate of Appreciation from Solapur Municipal Corporation.</li>
         </ul>
         <div class="xp-chips">
-          <span class="xchip">Python</span><span class="xchip">Flask</span><span class="xchip">OCR</span>
-          <span class="xchip">NLP</span><span class="xchip">LLMs</span><span class="xchip">FAISS</span><span class="xchip">React</span>
+          <span class="xchip">Python</span><span class="xchip">Flask</span><span class="xchip">Gemini 2.0 Flash</span>
+          <span class="xchip">Tesseract OCR</span><span class="xchip">Marathi NLP</span><span class="xchip">React</span>
         </div>
       </div>
     </div>
@@ -762,14 +839,14 @@ footer a{color:var(--blue2);text-decoration:none}
       </div>
       <div class="xp-body">
         <ul class="xp-pts">
-          <li>Built AI-powered web applications using Python, Flask and JavaScript frameworks.</li>
-          <li>Developed scalable REST APIs and integrated ML models into production workflows.</li>
-          <li>Worked on NLP document automation and LLM integration pipelines.</li>
-          <li>Maintained Git workflows and collaborative development practices across the team.</li>
+          <li>Built the <strong>Document Reference System</strong> — a FAISS + OpenAI RAG pipeline for legal judgment search, running on Port 8001.</li>
+          <li>Chunked and embedded legal judgment PDFs using OpenAI <code>text-embedding-3-small</code>; indexed vectors in FAISS for semantic retrieval with a web-search fallback.</li>
+          <li>Integrated GPT-3.5-turbo to generate judgment-style answers grounded in retrieved evidence chunks; implemented a confidence/hallucination validator before display.</li>
+          <li>Built a human review workflow — reviewers can approve, reject, or comment on answers; approved responses are cached for fast reuse.</li>
         </ul>
         <div class="xp-chips">
           <span class="xchip">Python</span><span class="xchip">Flask</span>
-          <span class="xchip">REST APIs</span><span class="xchip">LLM</span><span class="xchip">Git</span>
+          <span class="xchip">FAISS</span><span class="xchip">OpenAI Embeddings</span><span class="xchip">GPT-3.5-turbo</span><span class="xchip">RAG</span>
         </div>
       </div>
     </div>
@@ -859,7 +936,7 @@ footer a{color:var(--blue2);text-decoration:none}
       <div class="sec-label">Education</div>
       <h2 class="sec-title" style="margin-bottom:22px">Academic <span>background</span></h2>
       <div class="edu-g reveal" style="grid-template-columns:1fr">
-        <div class="edu"><div class="edu-yr">2026</div><div class="edu-deg">BTech – AI & Data Science</div><div class="edu-inst">NK Orchid College of Engineering & Technology, Solapur · DBATU · 2022–2026</div><div class="edu-score">8.09</div><div class="edu-sl">CGPA</div></div>
+        <div class="edu"><div class="edu-yr">2026</div><div class="edu-deg">BTech – AI & Data Science</div><div class="edu-inst">NK Orchid College of Engineering & Technology, Solapur · DBATU · 2022–2026</div><div class="edu-score">7.46</div><div class="edu-sl">CGPA</div></div>
         <div class="edu"><div class="edu-yr">2022</div><div class="edu-deg">Higher Secondary (12th HSC)</div><div class="edu-inst">Walchand College of Arts & Science · Maharashtra Board</div><div class="edu-score" style="color:#fbbf24">88.2%</div><div class="edu-sl">Percentage</div></div>
         <div class="edu"><div class="edu-yr">2020</div><div class="edu-deg">Secondary (10th SSC)</div><div class="edu-inst">B.F. Damani High School, Solapur · Maharashtra Board</div><div class="edu-score" style="color:var(--green2)">56.6%</div><div class="edu-sl">Percentage</div></div>
       </div>
@@ -911,8 +988,8 @@ footer a{color:var(--blue2);text-decoration:none}
           <p style="font-size:12px;color:var(--text2);line-height:1.7;margin-bottom:8px">Open to opportunities in AI engineering, backend development, and freelance AI projects.</p>
           <a href="mailto:renukasarvade2903@gmail.com" class="hb1" style="justify-content:center;font-size:12px">Send Email →</a>
           <div style="display:flex;gap:8px">
-            <a href="./Renuka_Sarvade_Resume.pdf" target="_blank" class="hb2" style="flex:1;justify-content:center;font-size:11px">👁 Resume</a>
-            <a href="./Renuka_Sarvade_Resume.pdf" download="Renuka_Sarvade_Resume.pdf" class="hb3" style="flex:1;justify-content:center;font-size:11px">⬇ Download</a>
+            <a id="ctView" href="#" target="_blank" class="hb2" style="flex:1;justify-content:center;font-size:11px">👁 Resume</a>
+            <a id="ctDl" href="#" download="Renuka_Sarvade_Resume.pdf" class="hb3" style="flex:1;justify-content:center;font-size:11px">⬇ Download</a>
           </div>
         </div>
       </div>
@@ -921,7 +998,7 @@ footer a{color:var(--blue2);text-decoration:none}
 </section>
 
 <footer>
-  <p>© 2025 <a href="./Renuka_Sarvade_Resume.pdf">Renuka Laxmikant Sarvade</a></p>
+  <p>© 2025 <a href="#">Renuka Laxmikant Sarvade</a></p>
   <p>Solapur, Maharashtra · India 🇮🇳</p>
 </footer>
 
@@ -950,6 +1027,15 @@ const ssO=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting)e.target.querySelectorAll('.ss-fill').forEach(f=>setTimeout(()=>f.classList.add('go'),200))});
 },{threshold:.25});
 document.querySelectorAll('#ssGrid').forEach(el=>ssO.observe(el));
+</script>
+<script>
+const resumeURL = "Renuka_Sarvade_Resume.pdf";
+
+document.getElementById("heroResume").href = resumeURL;
+document.getElementById("viewRes").href = resumeURL;
+document.getElementById("dlRes").href = resumeURL;
+document.getElementById("ctView").href = resumeURL;
+document.getElementById("ctDl").href = resumeURL;
 </script>
 </body>
 </html>
